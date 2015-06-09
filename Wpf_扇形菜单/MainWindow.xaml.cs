@@ -134,28 +134,78 @@ namespace Wpf_扇形菜单
             Debug.Print("btnHome_PreviewMouseUp");
             Point pp = Mouse.GetPosition(e.Source as FrameworkElement);
             Point p2 = (e.Source as FrameworkElement).PointToScreen(pp);
-          
 
-            if (Math.Abs(p2.X - p1.X) < 5 && Math.Abs(p2.Y - p1.Y) < 5)
+
+            if (Math.Abs(p2.X - p1.X) < 5 && Math.Abs(p2.Y - p1.Y) < 5 )
             {
+                if (isOpen == false)
+                {
+                    Visibility vi = Visibility.Visible;
+                    gdOpen.Visibility = vi;
+                    gdSelect.Visibility = vi;
+                    gdRemove.Visibility = vi;
+                    gdSetting.Visibility = vi;
+                    gdWriting.Visibility = vi;
+                    gdStar.Visibility = vi;
+                    gdClip.Visibility = vi;
+                    gdSave.Visibility = vi;
+                    gdClose.Visibility = vi;
+                }
+                else
+                {
+                    Visibility vi = Visibility.Collapsed;
+                    gdOpen.Visibility = vi;
+                    gdSelect.Visibility = vi;
+                    gdRemove.Visibility = vi;
+                    gdSetting.Visibility = vi;
+                    gdWriting.Visibility = vi;
+                    gdStar.Visibility = vi;
+                    gdClip.Visibility = vi;
+                    gdSave.Visibility = vi;
+                    gdClose.Visibility = vi;
+                }
+                isOpen = !isOpen;
+
+
 
                 Storyboard story = (Storyboard)this.FindResource("OnLoaded1");
                 story.Begin();
             }
-            else
-            {
-                this.Left += p2.X - p1.X;
-                this.Top += p2.Y - p1.Y;
-            }
+            isMove = false;
+            //else
+            //{
+            //    this.Left += p2.X - p1.X;
+            //    this.Top += p2.Y - p1.Y;
+            //}
 
         }
         Point p1;
+        Point mp1;
+        bool isMove=false;
         private void btnHome_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             Debug.Print("btnHome_PreviewMouseDown");
             Point pp = Mouse.GetPosition(e.Source as FrameworkElement);
             p1= (e.Source as FrameworkElement).PointToScreen(pp);
+            mp1 = p1;
+            isMove = true;
+        }
 
+       
+
+        private void btnHome_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            
+            if (isMove)
+            {
+                Point pp = Mouse.GetPosition(e.Source as FrameworkElement);
+                Point p2 = (e.Source as FrameworkElement).PointToScreen(pp);
+
+                this.Left += p2.X - mp1.X;
+                this.Top += p2.Y - mp1.Y;
+
+                mp1 = p2;
+            }
         }
 
       

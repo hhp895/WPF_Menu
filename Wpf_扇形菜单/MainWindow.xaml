@@ -451,7 +451,7 @@
 			</Grid>
 				
 			<Grid x:Name="gdHome" Width="434" Height="434">
-            <Button x:Name="btnHome" Content="Button" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource btnHomeStyle}" RenderTransformOrigin="0.5,0.5" Margin="24,20,0,0" PreviewMouseDown="btnHome_PreviewMouseDown" PreviewMouseUp="btnHome_PreviewMouseUp" >
+            <Button x:Name="btnHome" Content="Button" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource btnHomeStyle}" RenderTransformOrigin="0.5,0.5" Margin="24,20,0,0" PreviewMouseDown="btnHome_PreviewMouseDown" PreviewMouseUp="btnHome_PreviewMouseUp" PreviewMouseMove="btnHome_PreviewMouseMove" >
 				<Button.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
