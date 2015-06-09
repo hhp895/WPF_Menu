@@ -1,0 +1,13 @@
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\MainWindow.baml
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Window1.baml
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\MainWindow.g.cs
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Window1.g.cs
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\App.g.cs
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Wpf_扇形菜单_MarkupCompile.cache
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Wpf_扇形菜单.g.resources
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Wpf_扇形菜单.Properties.Resources.resources
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Wpf_扇形菜单.csproj.GenerateResource.Cache
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\bin\Debug\Wpf_扇形菜单.exe
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\bin\Debug\Wpf_扇形菜单.pdb
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Wpf_扇形菜单.exe
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Wpf_扇形菜单.pdb

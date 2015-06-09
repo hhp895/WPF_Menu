@@ -1,0 +1,16 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="Wpf_扇形菜单.Window1"
+	x:Name="Window"
+	Title="Window1"
+	Width="1024" Height="768">
+
+	<Grid x:Name="LayoutRoot">
+		<Canvas x:Name="打开" ClipToBounds="True" HorizontalAlignment="Left" Height="489" UseLayoutRounding="False" VerticalAlignment="Top" Width="433">
+			<Image x:Name="图层_26" Clip="F1M-1,152C10,166.5 247,471.5 262,489 308,456 347,433 433,427 432,382 419.5,22 417,0 296.5,5.5 156,35 -1,152z" Height="489" Canvas.Left="0" Source="打开_Images\图层 26.png" Canvas.Top="0" Width="433"/>
+		</Canvas>
+	
+	
+	</Grid>
+</Window>

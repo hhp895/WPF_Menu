@@ -1,0 +1,466 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="myWindow"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Wpf_扇形菜单.MainWindow"
+        Title="MainWindow" Height="434" Width="434" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown"  ResizeMode="NoResize"  Background="{x:Null}"   Topmost="True" Button.Click="btnClick">
+	<Window.Resources>
+		<Style x:Key="btnHomeStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+							<Image x:Name="Home" SnapsToDevicePixels="True" Clip="F1M195.437,0C336.437,0.5 391,124.437 390,194.937 388.5,311.937 284.937,392 195.437,389 85.437,387.5 2.5,297.937 0,194.937 0,94.437 82.437,-0.5 195.437,0z" Height="390" Source="Images\中心1.png" Width="390"/>
+                            <Image x:Name="Home_over"  SnapsToDevicePixels="True" Clip="F1M194.437,1C335.437,1.5 390,125.437 389,195.937 387.5,312.937 283.937,393 194.437,390 84.437,388.5 1.5,298.937 -1,195.937 -1,95.437 81.437,0.5 194.437,1z" Height="393" Canvas.Left="0" Source="Images\中心2.png" Canvas.Top="0" Width="390" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="Home_over" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="Home" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="btnOpenStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+                            <Image x:Name="图层_0" Clip="F1M0,152C11,166.5 248,471.5 263,489 309,456 348,433 434,427 433,382 420.5,22 418,0 297.5,5.5 157,35 0,152z" Height="489"  Source="Images\选择1.png" Width="434"/>
+                            <Image x:Name="_111" Clip="F1M-1,152C10,166.5 247,471.5 262,489 308,456 347,433 433,427 432,382 419.5,22 417,0 296.5,5.5 156,35 -1,152z" Height="489"  Source="Images\选择2.png" Width="433" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="_111" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="图层_0" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="btnSelectStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+                            <Image x:Name="图层_1" Clip="F1M17,-2C13.5,19.5 6,255 0,427 45.5,431.5 98,434.5 171,489 206,446.5 388,212.5 434,152 386,120.5 260.5,12.5 17,-2z" Height="489" Source="Images\框选1.png" Width="434"/>
+                            <Image x:Name="_222" Clip="F1M17,-2C13.5,19.5 6,255 0,427 45.5,431.5 98,434.5 171,489 206,446.5 388,212.5 434,152 386,120.5 260.5,12.5 17,-2z" Height="489"  Source="Images\框选2.png" Width="434" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="_222" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="图层_1" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="btnRemoveStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+                            <Image x:Name="图层_2" Clip="F1M287,0C271.5,12.5 75,229.5 0,316 39,347 75,408 90,474 248,441 312.5,425.5 509,385 496,321 455.5,149.5 287,0z" Height="474" Source="Images\清除1.png"  Width="509"/>
+                            <Image x:Name="_333" Clip="F1M287,0C271.5,12.5 75,229.5 0,316 39,347 75,408 90,474 248,441 312.5,425.5 509,385 496,321 455.5,149.5 287,0z" Height="474" Source="Images\清除2.png" Width="509" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="_333" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="图层_2" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="btnSettingStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+                            <Image x:Name="图层_3" Clip="F1M30,59C30,59 48,141 0,240 105,295 272.5,384.5 376,439 452,295 471,162 455,0 307,18 30,59 30,59z" Height="439"  Source="Images\设置1.png"  Width="461"/>
+                            <Image x:Name="_444" Clip="F1M30,59C30,59 48,141 0,240 105,295 272.5,384.5 376,439 452,295 471,162 455,0 307,18 30,59 30,59z" Height="438" Source="Images\设置2.png" Width="461" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="_444" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="图层_3" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="btnWritingStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+                            <Image x:Name="图层_4" Clip="F1M140,0C182,23 484,214 502,226 407,362 334,429 160,511 142,471 62,270 0,116 27,102 87,80 140,0z" Height="511" Source="Images\标注1.png" Width="502"/>
+                            <Image x:Name="_555" Clip="F1M140,0C182,23 484,214 502,226 407,362 334,429 160,511 142,471 62,270 0,116 27,102 87,80 140,0z" Height="511"  Source="Images\标注2.png"  Width="502" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="_555" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="图层_4" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="btnStarStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+                            <Image x:Name="图层_5" Clip="F1M131,1C235,31 308,-1 314,0 351,117 440,392 446,406 249,452 182,452 0,407 8,380 61,211 131,1z" Height="440" Source="Images\评星1.png"  Width="445"/>
+                            <Image x:Name="_666" Clip="F1M131,1C235,31 308,-1 314,0 351,117 440,392 446,406 249,452 182,452 0,407 8,380 61,211 131,1z" Height="440" Source="Images\评星2.png" Width="445" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="_666" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="图层_5" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="btnClipStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+                            <Image x:Name="图层_6" Clip="F1M361,0C338,16 3,223 -1,227 102,375 195,447 340,512 357,476 473,196 500,116 491,118 398,67 361,0z" Height="512" Source="Images\裁剪1.png" Width="500"/>
+                            <Image x:Name="_777" Clip="F1M360,0C337,16 2,223 -2,227 101,375 194,447 339,512 356,476 472,196 499,116 490,118 397,67 360,0z" Height="512" Canvas.Left="0" Source="Images\裁剪2.png" Canvas.Top="0" Width="499" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="_777" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="图层_6" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="btnSaveStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+                            <Image x:Name="图层_7" Clip="F1M5,0C75,10 422,57 428,59 419,148 443,213 460,239 449,245 162,397 84,438 71,413 -31,235 5,0z" Height="438"  Source="Images\保存1.png" Width="460"/>
+                            <Image x:Name="_888" Clip="F1M5,-1C75,9 422,56 428,58 419,147 443,212 460,238 449,244 162,396 84,437 71,412 -31,234 5,-1z" Height="437"  Source="Images\保存2.png"  Width="460" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="_888" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="图层_7" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="btnCloseStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid" >
+                            <Image x:Name="图层_8" Clip="F1M222,0C244,20 451,250 507,316 489,335 431,390 416,474 393,468 0,384 0,384 0,384 39,155 222,0z" Height="474"  Source="Images\退出1.png" Width="507"/>
+                            <Image x:Name="_999" Clip="F1M221,0C243,20 450,250 506,316 488,335 430,390 415,474 392,468 -1,384 -1,384 -1,384 38,155 221,0z" Height="474" Source="Images\退出2.png" Width="506" Visibility="Hidden"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="_999" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="图层_8" Value="Hidden"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="OnLoaded1">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="gdSelect">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-40"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="gdRemove">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-80"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="gdSetting">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-120"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="gdWriting">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-160"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="gdStar">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-200"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="gdClip">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-240"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="gdSave">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-280"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="gdClose">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-320"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource OnLoaded1}"/>
+		</EventTrigger>
+	</Window.Triggers>
+	<Grid RenderTransformOrigin="0.5,0.5" >
+		<Grid.RenderTransform>
+			<TransformGroup>
+				<ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+				<SkewTransform/>
+				<RotateTransform/>
+				<TranslateTransform/>
+			</TransformGroup>
+		</Grid.RenderTransform>
+		
+		<Canvas x:Name="未标题_1" ClipToBounds="True" HorizontalAlignment="Left" Height="1447" UseLayoutRounding="False" VerticalAlignment="Top" Width="1447" Margin="0,-254,-431,-455" Visibility="Hidden">
+					<Image x:Name="图标1_合并_" Height="1447" Canvas.Left="-214" Source="未标题-1_Images\图标1（合并）.png" Canvas.Top="-101" Width="1447" RenderTransformOrigin="0.5,0.5">
+						<Image.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Image.RenderTransform>
+					</Image>
+				</Canvas>
+		<Grid x:Name="gdOpen" Width="434" Height="434">
+		<Button x:Name="btnOpen" Content="Button" HorizontalAlignment="Left" Margin="-67.001,-171.334,0,0" VerticalAlignment="Top"  Style="{DynamicResource btnOpenStyle}" RenderTransformOrigin="0.5,0.5">
+			<Button.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Button.RenderTransform>
+		</Button>
+		</Grid>
+			<Grid x:Name="gdSelect" Width="434" Height="434" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+		<Button x:Name="btnSelect" Content="Button" HorizontalAlignment="Left" Margin="70.332,-172.667,-70.333,0" VerticalAlignment="Top"  Style="{DynamicResource btnSelectStyle}" RenderTransformOrigin="0.5,0.5">
+			<Button.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Button.RenderTransform>
+		</Button>
+		</Grid>
+			<Grid x:Name="gdRemove" Width="434" Height="434" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+			<Button x:Name="btnRemove" Content="Button" HorizontalAlignment="Left" Margin="100.416,-110,-175.417,0" VerticalAlignment="Top"  Style="{DynamicResource btnRemoveStyle}" RenderTransformOrigin="0.5,0.5">
+			<Button.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Button.RenderTransform>
+		</Button>
+		</Grid>
+			<Grid x:Name="gdSetting" Width="434" Height="434" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+			<Button x:Name="btnSetting" Content="Button" HorizontalAlignment="Left" Margin="136.083,35,-163.083,-35" VerticalAlignment="Top"  Style="{DynamicResource btnSettingStyle}" RenderTransformOrigin="0.5,0.5" >
+			<Button.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Button.RenderTransform>
+		</Button>
+		</Grid>
+		<Grid x:Name="gdWriting" Width="434" Height="434" RenderTransformOrigin="0.5,0.5">
+			<Grid.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Grid.RenderTransform>
+			<Button x:Name="tnWriting" Content="Button" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource btnWritingStyle}" RenderTransformOrigin="0.5,0.5" Margin="77.916,85.833,-142.917,-162.5" >
+				<Button.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Button.RenderTransform>
+			</Button>
+		</Grid>
+		<Grid x:Name="gdStar" Width="434" Height="434" RenderTransformOrigin="0.5,0.5">
+			<Grid.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Grid.RenderTransform>
+			<Button x:Name="btnStar" Content="Button" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource btnStarStyle}" RenderTransformOrigin="0.5,0.5" Margin="-4.583,146.889,-6.417,-155.778" >
+				<Button.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Button.RenderTransform>
+			</Button>
+		</Grid>
+			<Grid x:Name="gdClip" Width="434" Height="434" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+					<Button x:Name="btnClip" Content="Button" HorizontalAlignment="Left" Margin="-140.5,85.667,0,-162.333" VerticalAlignment="Top"  Style="{DynamicResource btnClipStyle}" RenderTransformOrigin="0.5,0.5">
+				<Button.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Button.RenderTransform>
+			</Button>
+			</Grid>
+			<Grid x:Name="gdSave" Width="434" Height="434" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Button x:Name="btnSave" Content="Button" HorizontalAlignment="Left" Margin="-159,35,0,-35" VerticalAlignment="Top"  Style="{DynamicResource btnSaveStyle}" RenderTransformOrigin="0.5,0.5">
+				<Button.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Button.RenderTransform>
+			</Button>
+			</Grid>
+			<Grid x:Name="gdClose" Width="434" Height="434" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Button x:Name="btnClose" Content="Button" HorizontalAlignment="Left" Margin="-172,-109,0,0" VerticalAlignment="Top"  Style="{DynamicResource btnCloseStyle}" RenderTransformOrigin="0.5,0.5">
+				<Button.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Button.RenderTransform>
+			</Button>
+			</Grid>
+				
+			<Grid x:Name="gdHome" Width="434" Height="434">
+				<Button x:Name="btnHome" Content="Button" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{DynamicResource btnHomeStyle}" RenderTransformOrigin="0.5,0.5" Margin="24,20,0,0" MouseUp="btnHome_MouseUp">
+				<Button.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Button.RenderTransform>
+			</Button>
+			</Grid>
+		
+	</Grid>
+</Window>
