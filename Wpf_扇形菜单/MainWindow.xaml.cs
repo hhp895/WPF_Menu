@@ -27,23 +27,36 @@ namespace Wpf_扇形菜单
         {
             InitializeComponent();
 
-            btnHome.AddHandler(Button.MouseLeftButtonDownEvent, new RoutedEventHandler(btnHome_PreviewMouseLeftButtonDown), true);
-            btnHome.AddHandler(Button.MouseLeftButtonUpEvent, new RoutedEventHandler(btnHome_PreviewMouseLeftButtonUp), true);
-            myWindow.AddHandler(Button.PreviewMouseDownEvent, new RoutedEventHandler(window_PreviewMouseDown), true);
+            //btnHome.AddHandler(Button.PreviewMouseLeftButtonDownEvent, new RoutedEventHandler(btnHome_PreviewMouseLeftButtonDown), true);
+            //btnHome.AddHandler(Button.PreviewMouseLeftButtonUpEvent, new RoutedEventHandler(btnHome_PreviewMouseLeftButtonUp), true);
+            //myWindow.AddHandler(Window.PreviewMouseDownEvent, new RoutedEventHandler(window_PreviewMouseDown), true);
+            //myWindow.AddHandler(Window.PreviewMouseUpEvent, new RoutedEventHandler(window_PreviewMouseUp), true);
         }
         private void btnClick(object sender, RoutedEventArgs e)
         {
             FrameworkElement feSource = e.Source as FrameworkElement;
             MessageBox.Show(feSource.Name);
-            if (feSource.Name == "btnHome")
-            {
-                this.DragMove();
-            }
+            //if (feSource.Name == "btnHome")
+            //{
+            //    this.DragMove();
+            //}
         }
         private void window_PreviewMouseDown(object sender, RoutedEventArgs e)
         {
+          
             base.DragMove();
             Debug.Print("window_PreviewMouseDown");
+            
+            //curPos = e.GetPosition(this);
+
+            //Point tmp = Mouse.GetPosition(e.Source as FrameworkElement);//WPF方法
+            //curPos = (e.Source as FrameworkElement).PointToScreen(tmp);//WPF方法
+        }
+        private void window_PreviewMouseUp(object sender, RoutedEventArgs e)
+        {
+           
+            Debug.Print("window_PreviewMouseUp");
+           // ReleaseMouseCapture();
             //curPos = e.GetPosition(this);
 
             //Point tmp = Mouse.GetPosition(e.Source as FrameworkElement);//WPF方法
@@ -51,14 +64,15 @@ namespace Wpf_扇形菜单
         }
         private void btnHome_PreviewMouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
-
+           // CaptureMouse();
             Debug.Print("btnHome_PreviewMouseLeftButtonDown");
-            curPos = Mouse.GetPosition(this);
+            //curPos = Mouse.GetPosition(this);
 
-            Point tmp = Mouse.GetPosition(e.Source as FrameworkElement);//WPF方法
-            curPos = (e.Source as FrameworkElement).PointToScreen(tmp);//WPF方法
+            //Point tmp = Mouse.GetPosition(e.Source as FrameworkElement);//WPF方法
+            //curPos = (e.Source as FrameworkElement).PointToScreen(tmp);//WPF方法
 
-
+            Storyboard story = (Storyboard)this.FindResource("OnLoaded1");
+            story.Begin();
             
         }
         private void btnHome_PreviewMouseLeftButtonUp(object sender, RoutedEventArgs e)
@@ -103,9 +117,10 @@ namespace Wpf_扇形菜单
                 gdClose.Visibility = vi;
             }
             isOpen = !isOpen;
+          
         }
 
-        private void btnHome_MouseUp(object sender, MouseButtonEventArgs e)
+        private void btnHome_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             //Point tmp = Mouse.GetPosition(e.Source as FrameworkElement);//WPF方法
             //Point nowPos = (e.Source as FrameworkElement).PointToScreen(tmp);//WPF方法
@@ -116,12 +131,44 @@ namespace Wpf_扇形菜单
             //    Storyboard story = (Storyboard)this.FindResource("OnLoaded1");
             //    story.Begin();
             //}
+            Debug.Print("btnHome_PreviewMouseUp");
+            Point pp = Mouse.GetPosition(e.Source as FrameworkElement);
+            Point p2 = (e.Source as FrameworkElement).PointToScreen(pp);
+          
+
+            if (Math.Abs(p2.X - p1.X) < 5 && Math.Abs(p2.Y - p1.Y) < 5)
+            {
+
+                Storyboard story = (Storyboard)this.FindResource("OnLoaded1");
+                story.Begin();
+            }
+            else
+            {
+                this.Left += p2.X - p1.X;
+                this.Top += p2.Y - p1.Y;
+            }
+
+        }
+        Point p1;
+        private void btnHome_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Debug.Print("btnHome_PreviewMouseDown");
+            Point pp = Mouse.GetPosition(e.Source as FrameworkElement);
+            p1= (e.Source as FrameworkElement).PointToScreen(pp);
+
         }
 
-        private void Window_MouseDown(object sender, RoutedEventArgs e)
-        {
-            base.DragMove();
-            Debug.Print("Window_MouseDown");
-        }
+      
+
+        //private void Window_MouseDown(object sender, RoutedEventArgs e)
+        //{
+        //    base.DragMove();
+        //    Debug.Print("Window_MouseDown");
+        //}
+
+        //private void myWindow_MouseUp(object sender, MouseButtonEventArgs e)
+        //{
+        //    Debug.Print("myWindow_MouseUp");
+        //}
     }
 }

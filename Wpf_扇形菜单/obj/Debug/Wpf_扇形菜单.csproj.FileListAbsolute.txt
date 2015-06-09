@@ -11,3 +11,4 @@ H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\bin\Debug\Wpf_扇形菜单.exe
 H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\bin\Debug\Wpf_扇形菜单.pdb
 H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Wpf_扇形菜单.exe
 H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Wpf_扇形菜单.pdb
+H:\Study\WPF\Wpf_扇形菜单\Wpf_扇形菜单\obj\Debug\Wpf_扇形菜单.csprojResolveAssemblyReference.cache
