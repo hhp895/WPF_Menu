@@ -34,8 +34,8 @@
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type Button}">
 						<Grid x:Name="grid" >
-                            <Image x:Name="图层_0" Clip="F1M0,152C11,166.5 248,471.5 263,489 309,456 348,433 434,427 433,382 420.5,22 418,0 297.5,5.5 157,35 0,152z" Height="489"  Source="Images\选择1.png" Width="434"/>
-                            <Image x:Name="_111" Clip="F1M-1,152C10,166.5 247,471.5 262,489 308,456 347,433 433,427 432,382 419.5,22 417,0 296.5,5.5 156,35 -1,152z" Height="489"  Source="Images\选择2.png" Width="433" Visibility="Hidden"/>
+                            <Image x:Name="图层_0" Clip="F1M0,152C11,166.5 248,471.5 263,489 309,456 348,433 434,427 433,382 420.5,22 418,0 297.5,5.5 157,35 0,152z" Height="489"  Source="Images\打开1.png" Width="434"/>
+                            <Image x:Name="_111" Clip="F1M-1,152C10,166.5 247,471.5 262,489 308,456 347,433 433,427 432,382 419.5,22 417,0 296.5,5.5 156,35 -1,152z" Height="489"  Source="Images\打开2.png" Width="433" Visibility="Hidden"/>
 						</Grid>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsMouseOver" Value="True">
